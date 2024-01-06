@@ -1,0 +1,7 @@
+module RailsErdMermaid
+  class App
+    def initialize: (Config config) -> void
+
+    def export: () -> untyped
+  end
+end

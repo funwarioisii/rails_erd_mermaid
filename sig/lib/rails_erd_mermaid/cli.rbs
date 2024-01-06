@@ -1,0 +1,7 @@
+module RailsErdMermaid
+  class CLI < Thor
+    DEFAULT_CONFIG: Hash[Symbol, Object]
+
+    def export: () -> untyped
+  end
+end

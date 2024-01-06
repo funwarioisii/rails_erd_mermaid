@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+set -vx
+
+bundle install
+
+# make debug rails app if it doesn't exist
+if [ ! -d "debug_app" ]; then
+  rails new debug_app
+fi

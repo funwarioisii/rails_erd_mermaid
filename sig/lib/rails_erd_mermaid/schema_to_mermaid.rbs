@@ -1,0 +1,21 @@
+module RailsErdMermaid
+  class SchemaToMermaid
+    module IntermediateRepresentation
+      Data: untyped
+
+      Model: untyped
+
+      Column: untyped
+
+      Association: untyped
+    end
+
+    def self.run: () -> untyped
+
+    def run: () -> IntermediateRepresentation::Data
+
+    private
+
+    def get_reflection_model_name: (untyped reflection) -> untyped
+  end
+end

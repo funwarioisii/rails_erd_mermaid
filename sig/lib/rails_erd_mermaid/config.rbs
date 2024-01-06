@@ -1,0 +1,12 @@
+module RailsErdMermaid
+  class Config
+
+    attr_reader filetype: string
+
+    attr_reader dir_name: string
+
+    attr_reader file_name: string
+
+    def initialize: (**untyped options) -> void
+  end
+end
