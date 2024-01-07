@@ -10,3 +10,4 @@
 # rspec failure tracking
 .rspec_status
 /debug_app/
+/.idea/

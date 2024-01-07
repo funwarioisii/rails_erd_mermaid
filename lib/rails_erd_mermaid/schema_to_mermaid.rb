@@ -91,54 +91,45 @@ module RailsErdMermaid
         )
 
         model.reflect_on_all_associations(:has_many).each do |reflection|
+          next if reflection.options[:through]
+
+          # example: Model has_many :ReflectedModel
+          # Model ||--o{ ReflectedModel : "has many"
           data.associations << IntermediateRepresentation::Association.new(
             left_model_name: model.name,
-            left_value: reflection.options[:through] ? "}o" : "||",
+            left_value: "||",
             right_model_name: reflection.class_name,
             right_value: "o{",
-            label: reflection.name
+            label: "has many"
           )
         end
 
         model.reflect_on_all_associations(:belongs_to).each do |reflection|
+          # example: Model belongs_to :ReflectedModel
+          # Model }o--|| ReflectedModel : "belongs to"
           data.associations << IntermediateRepresentation::Association.new(
-            left_model_name: reflection.class_name,
-            left_value: "o{",
-            right_model_name: model.name,
-            right_value: reflection.options[:through] ? "}o" : "||",
-            label: reflection.name
+            left_model_name: model.name,
+            left_value: "}o",
+            right_model_name: reflection.class_name,
+            right_value: "||",
+            label: "belongs to"
           )
         end
 
         model.reflect_on_all_associations(:has_one).each do |reflection|
+          # example: Model has_one :ReflectedModel
+          # Model ||--o| ReflectedModel : "belongs to"
           data.associations << IntermediateRepresentation::Association.new(
             left_model_name: model.name,
-            left_value: reflection.options[:through] ? "}o" : "||",
+            left_value: "||",
             right_model_name: reflection.class_name,
-            right_value: "o{",
+            right_value: "o|",
             label: reflection.name
           )
         end
       end
 
       data
-    end
-
-    private
-
-    def get_reflection_model_name(reflection)
-      p reflection.options
-      if reflection.options[:class_name]
-        reflection.options[:class_name].to_s.classify
-      elsif reflection.options[:through]
-        if reflection.options[:source]
-          reflection.options[:source].to_s.classify
-        else
-          reflection.class_name
-        end
-      else
-        reflection.class_name
-      end
     end
   end
 end
