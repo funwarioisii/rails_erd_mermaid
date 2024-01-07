@@ -100,7 +100,7 @@ module RailsErdMermaid
             left_value: "||",
             right_model_name: reflection.class_name,
             right_value: "o{",
-            label: "has many"
+            label: '"has many"'
           )
         end
 
@@ -112,7 +112,7 @@ module RailsErdMermaid
             left_value: "}o",
             right_model_name: reflection.class_name,
             right_value: "||",
-            label: "belongs to"
+            label: '"belongs to"'
           )
         end
 
@@ -124,7 +124,7 @@ module RailsErdMermaid
             left_value: "||",
             right_model_name: reflection.class_name,
             right_value: "o|",
-            label: reflection.name
+            label: '"has one"'
           )
         end
       end
