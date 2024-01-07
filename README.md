@@ -1,6 +1,6 @@
 # RailsErdMermaid
 
-
+![demo](https://raw.githubusercontent.com/funwarioisii/rails_erd_mermaid/master/docs/assets/demo.gif)
 
 ## Installation
 
