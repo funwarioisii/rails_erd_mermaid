@@ -15,7 +15,7 @@ module RailsErdMermaid
     def export
       config = Config.new(**options)
       app = App.new(config)
-      app.export
+      app.run
     end
   end
 end
